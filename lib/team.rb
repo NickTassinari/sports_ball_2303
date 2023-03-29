@@ -4,7 +4,7 @@ class Team
     @team_name = team_name
     @city = city 
     @roster = []
-    # @long_term_players = []
+    
   end
 
   def player_count
@@ -16,19 +16,24 @@ class Team
   end
 
   def long_term_players  
-   @long_term_players = @roster.map do |player|
+   roster.select do |player|
     
-     if player.contract_length > 24 
-        player
-     end 
-    
+     player.contract_length > 24 
     end 
-    
   end
 
+  def short_term_players
+    roster.select do |player|
+      player.contract_length <= 24 
+    end
+  end
 
   def total_value 
-
-    @team.player.total_cost * @team.player_count 
+    total_value = roster.each do |player|
+      
+      player.total_cost 
+    total_value 
+    end
+    
   end
 end
