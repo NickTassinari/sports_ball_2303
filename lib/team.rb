@@ -42,5 +42,11 @@ class Team
   end
 
   def players_by_last_name
+    roster.map do |player|
+      # require 'pry'; binding.pry
+      player.last_name
+    end.sort.join(", ") 
+
+  end
 end   
 
