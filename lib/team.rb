@@ -1,5 +1,5 @@
 class Team 
-  attr_reader :team_name, :city, :roster, :long_term_players
+  attr_reader :team_name, :city, :roster, :long_term_players, :player_count
   def initialize(team_name, city)
     @team_name = team_name
     @city = city 
@@ -7,33 +7,32 @@ class Team
     
   end
 
-  def player_count
-    @roster.length 
+  def player_count 
+   roster.length 
   end
 
-  def add_player(new_guy)
-    @roster << new_guy
+  def add_player(player)
+    roster << player 
   end
 
-  def long_term_players  
-   roster.select do |player|
-    
-     player.contract_length > 24 
-    end 
-  end
-
-  def short_term_players
+  def long_term_players
     roster.select do |player|
-      player.contract_length <= 24 
+      player.contract_length > 24
     end
   end
+
+  def short_term_players 
+    roster.select do |player|
+      player.contract_length < 25
+    end
+  end 
 
   def total_value 
-    total_value = roster.each do |player|
-      
-      player.total_cost 
-    total_value 
-    end
+    roster.map do |player|
+    player.total_cost 
+    
+    end.sum 
     
   end
-end
+end   
+

@@ -50,7 +50,22 @@ RSpec.describe Team do
     expect(team.long_term_players).to eq(long_termers)
   end
 
-  xit '#total_value' do 
+  it '#short_term_players' do 
+     team = Team.new("Dodgers", "Los Angeles")
+    player_1 = Player.new("Michael Palledorous" , 1000000, 36)
+    player_2 = Player.new("Kenny DeNunez", 500000, 24)
+    player_3 = Player.new("Alan McClennan", 750000, 48)
+    player_4 = Player.new("Hamilton Porter", 100000, 12)
+    team.add_player(player_1)
+    team.add_player(player_2)
+    team.add_player(player_3)
+    team.add_player(player_4)
+    short_termers = [player_2, player_4]
+
+    expect(team.short_term_players).to eq(short_termers)
+  end
+
+  it '#total_value' do 
     team = Team.new("Dodgers", "Los Angeles")
     player_1 = Player.new("Michael Palledorous" , 1000000, 36)
     player_2 = Player.new("Kenny DeNunez", 500000, 24)
@@ -60,7 +75,7 @@ RSpec.describe Team do
     team.add_player(player_2)
     team.add_player(player_3)
     team.add_player(player_4)
-
+# require 'pry'; binding.pry
     expect(team.total_value).to eq(85200000)
   end
 
