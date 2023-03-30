@@ -34,5 +34,13 @@ class Team
     end.sum 
     
   end
+
+  def average_cost_of_player
+
+   new_string = "$" + (total_value / player_count).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse 
+   new_string
+  end
+
+  def players_by_last_name
 end   
 
