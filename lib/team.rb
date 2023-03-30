@@ -30,9 +30,19 @@ class Team
   def total_value 
     roster.map do |player|
     player.total_cost 
+
+    #roster.sum do |player|
+    #player.total_cost 
     
     end.sum 
-    
+  end
+
+  def details 
+    {
+      "total_value" => total_value,
+      "player_count" => player_count
+    }
+  
   end
 
   def average_cost_of_player
